@@ -27,6 +27,6 @@ for nsteps in [4000]:
     nburn = 20
     outfile="test_chain_mpi.dat"
     sampler = emcee_wrapper.Sampler(nsteps, nburn, outfile, nwalkers, ndim, startpoint, lnprob, [means, icov], pool)
-    sampler.config()
+    sampler.config(init_from_prev_chain=True)
     sampler.execute()
 sampler.done()
